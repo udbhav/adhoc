@@ -1,0 +1,4 @@
+.form-row.body label, .form-row.read_more label {
+    float: none;
+    margin-bottom: 10px;
+}

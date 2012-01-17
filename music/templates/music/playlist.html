@@ -1,0 +1,19 @@
+{% load music %}
+
+{% if song %}
+<ul class="playlist unstyled">
+  <li data-song-id="{{ song.id }}">{{ song.artist }} - <span class="title">{{ song }}</span><div class="song_extras"></div></li>
+</ul>
+{% endif %}
+{% if release %}
+<ul class="playlist unstyled">
+  {% for song in release|get_tracklist %}
+  <li data-song-id="{{ song.id }}"{% if not song.streamable %}class="disabled"{% endif %}>
+    <div class="song_extras">
+      {% if song.downloadable %}<a href="{{ song.download_url }}">Download</a> | {% endif %}
+    </div>
+    <span class="title">{{ song }}</span>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}

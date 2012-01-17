@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AdHoc {% block page_title %}{% endblock %}</title>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	 <link rel="stylesheet" media="all" href="{{ STATIC_URL }}css/bootstrap.min.css" />
+	 <link rel="stylesheet" media="all" href="{{ STATIC_URL }}css/style.css" />
+   {% block css %}{% endblock css %}
+   {% block meta_description %}{% endblock meta_description %}
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="/">Ad Hoc</a>
+          <ul class="nav">
+            <li{% if current_nav == 'breaking' %} class="active"{% endif %}><a href="{% url posts_by_tag tag='breaking' %}">Breaking</a></li>
+            <li{% if current_nav == 'favorite' %} class="active"{% endif %}><a href="{% url posts_by_tag tag='favorite' %}">Favorites</a></li>
+            <li{% if current_nav == 'mix' %} class="active"{% endif %}><a href="{% url posts_by_tag tag='mix' %}">Mixes</a></li>
+            <li{% if current_nav == 'feature' %} class="active"{% endif %}><a href="{% url posts_by_tag tag='feature' %}">Features</a></li>
+            <li{% if current_nav == 'zine' %} class="active"{% endif %}><a href="#">Zine</a></li>
+            <li{% if current_nav == 'about' %} class="active"{% endif %}><a href="#">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        {% block title %}{% endblock %}
+        <div class="row">
+          <div class="span10">
+            {% block content %}{% endblock content %}
+          </div>
+          <div class="span6">
+            {% block sidebar %}{% include "blog/sidebar.html" %}{% endblock sidebar %}
+          </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/soundmanager2-nodebug-jsmin.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/audio.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/json.min.js"></script>
+
+    {% block javascript %}{% endblock javascript %}
+  </body>
+</html>

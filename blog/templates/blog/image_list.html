@@ -1,0 +1,14 @@
+{% extends "base_simple.html" %}
+
+{% block content %}
+<h1>Choose an image below</h1>
+<ul class="unstyled">
+  {% for image in object_list %}
+  <li><a href="{{ image.medium_image.url }}">{{ image }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/images.js"></script>
+{% endblock javascript %}

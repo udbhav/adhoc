@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load adhoc_posts %}
+
+{% block content %}
+{% include "blog/post_top.html" %}
+{% autoescape off %}
+<div class="embed">{{ object|return_embeds:"3" }}</div>
+{{ object.read_more }}
+<div class="embed">{{ object|return_embeds:"4" }}</div>
+{% endautoescape %}
+{% endblock %}

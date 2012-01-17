@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load adhoc_posts %}
+
+{% block content %}
+{% for object in object_list %}
+<article>
+{% include "blog/post_top.html" %}
+{% if object|read_more %}<a href="{{ object.get_absolute_url }}" class="read_more">Read More</a>{% endif %}
+</article>
+{% empty %}
+<article><h3>Sorry no posts matched.</h3></article>
+{% endfor %}
+{% endblock %}

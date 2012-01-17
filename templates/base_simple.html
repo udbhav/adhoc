@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>AdHoc {% block page_title %}{% endblock %}</title>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	 <link rel="stylesheet" media="all" href="{{ STATIC_URL }}css/bootstrap.min.css" />
+	 <link rel="stylesheet" media="all" href="{{ STATIC_URL }}css/style.css" />
+   {% block css %}{% endblock css %}
+   {% block meta_description %}{% endblock meta_description %}
+  </head>
+
+  <body class="simple">
+    <div class="container">
+    {% block content %}{% endblock content %}
+    </div>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    {% block javascript %}{% endblock javascript %}
+  </body>
+</html>
