@@ -16,7 +16,7 @@ class Migration(SchemaMigration):
         db.send_create_signal('blog', ['Image'])
 
         # Adding field 'Post.header_image'
-        db.add_column('blog_post', 'header_image', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['blog.Image']), keep_default=False)
+        db.add_column('blog_post', 'header_image', self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['blog.Image']), keep_default=False)
 
 
     def backwards(self, orm):

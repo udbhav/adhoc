@@ -18,7 +18,7 @@ class Migration(SchemaMigration):
         db.add_column('blog_post', 'published', self.gf('django.db.models.fields.BooleanField')(default=True), keep_default=False)
 
         # Adding field 'Post.timestamp'
-        db.add_column('blog_post', 'timestamp', self.gf('django.db.models.fields.DateTimeField')(default=''), keep_default=False)
+        db.add_column('blog_post', 'timestamp', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now()), keep_default=False)
 
 
     def backwards(self, orm):
