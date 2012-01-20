@@ -170,4 +170,4 @@ try:
 except ImportError:
     pass
 
-# Hope this works
+# Hope this works now
