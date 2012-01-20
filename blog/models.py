@@ -46,7 +46,7 @@ class Embed(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     header_image = models.ForeignKey(Image, blank=True, null=True)
     body = models.TextField(blank=True)
     read_more = models.TextField(blank=True)
