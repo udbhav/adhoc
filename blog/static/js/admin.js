@@ -2,7 +2,8 @@ $(document).ready(function() {
     $("textarea").ckeditor({
 			  toolbar :
 			  [
-            ['Bold', 'Italic', '-', 'Link', 'Unlink','-', 'Image'],
+            {name: 'basic', items : ['Bold', 'Italic', '-', 'Link', 'Unlink','-', 'Image'] },
+	          { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo', 'Source' ] },
 			  ],
         filebrowserBrowseUrl : '/images/',
         filebrowserUploadUrl : '/images/new/'
