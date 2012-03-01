@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'taggit',
 
     'blog',
+    'advertising',
     'music',
 )
 

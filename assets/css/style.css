@@ -89,7 +89,7 @@ nav a {
 #features .text {
     position: absolute;
     bottom: 25px;
-    width: 230px;
+    width: 240px;
     padding: 10px;
     background: url(../images/featurebg.png);
 }
@@ -112,6 +112,14 @@ article h1 a {
 
 article h1 {
     margin-bottom: 15px;
+}
+
+#sidebar li {
+    margin-bottom: 20px;
+}
+
+#sidebar .fb-like-box {
+    background: #fff;
 }
 
 /* Player */

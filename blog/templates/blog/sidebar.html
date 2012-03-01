@@ -1,5 +1,8 @@
+{% load advertising_tags %}
 <ul id="sidebar" class="unstyled">
-  <li><img src="http://placehold.it/300x250" /></li>
-  <li><img src="http://placehold.it/300x250" /></li>
-  <li><img src="http://placehold.it/300x250" /></li>
+  {% place_ad '2' %}
+  <li>
+    <div class="fb-like-box" data-href="http://www.facebook.com/adhocfm" data-width="300" data-show-faces="true" data-stream="false" data-header="false"></div>
+  </li>
+  {% place_ad '3' %}
 </ul>
