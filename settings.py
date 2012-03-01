@@ -162,8 +162,8 @@ LOGGING = {
     }
 }
 
-OEMBED_MAX_WIDTH = '580'
-OEMBED_MAX_HEIGHT = '580'
+OEMBED_MAX_WIDTH = '500'
+OEMBED_MAX_HEIGHT = '500'
 
 try:
     from local_settings import *

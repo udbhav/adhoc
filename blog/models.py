@@ -19,7 +19,7 @@ class Image(models.Model):
         options={'quality': 90}
         )
     feature_image = ImageSpec(
-        [resize.Fit(250, 250),],
+        [resize.SmartCrop(260, 260),],
         image_field='image',
         format='JPEG',
         options={'quality': 90}
@@ -77,3 +77,6 @@ class Feature(models.Model):
     byline = models.CharField(max_length=255, blank=True)
     active = models.BooleanField(blank=True)
     order = models.IntegerField(default=1)
+
+    def __unicode__(self):
+        return self.title

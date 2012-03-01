@@ -29,8 +29,8 @@
             <li{% if current_nav == 'about' %} class="active"{% endif %}><a href="#">About</a></li>
           </ul>
         </nav>
+        {% block features %}{% endblock %}
         <div class="content">
-          {% block title %}{% endblock %}
           <div class="row">
             <div class="span8">
               {% block content %}{% endblock content %}

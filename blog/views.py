@@ -22,11 +22,18 @@ class PostsByTag(PostIndex):
         return Post.objects.filter(tags__name__in=[self.kwargs['tag']]).filter(published=True).order_by('timestamp')
 
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
         context = super(PostsByTag, self).get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
         context['current_nav'] = self.kwargs['tag']
         return context
+
+
+
+class HomeView(PostIndex):
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['features'] = Feature.objects.filter(active=True).order_by('order')
+        return context
+
 
 @login_required
 @csrf_exempt
