@@ -1,7 +1,7 @@
 from django import template
 from datetime import datetime
 
-from adhoc.advertising.models import *
+from advertising.models import *
 
 register = template.Library()
 
