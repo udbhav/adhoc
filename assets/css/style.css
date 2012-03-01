@@ -1,44 +1,76 @@
-/* Override some defaults */
-html, body {
-    background-color: #eee;
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
+
 body {
-    padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+    background: #000000; /* Old browsers */
+    background: -moz-linear-gradient(top, #000000 0%, #ffffff 80%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(80%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #000000 0%,#ffffff 80%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #000000 0%,#ffffff 80%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #000000 0%,#ffffff 80%); /* IE10+ */
+    background: linear-gradient(top, #000000 0%,#ffffff 80%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }
-.container > footer p {
-    text-align: center; /* center align it with the container */
+
+#texture_wrapper {
+    background-image: url(../images/bg_texture.png);
 }
-/* The white background content wrapper */
-.content {
-    background-color: #fff;
+
+.span8 {
+    background: #ffffff;
+}
+
+#header {
+    margin-top: 20px;
+}
+ 
+#logo {
+    float: left;
+}
+
+#logo a {
+    text-indent: -9999px;
+    display: block;
+    background: url(../images/logo.png);
+    width: 162px;
+    height: 171px;
+}
+
+#header .ad {
+    float: right;
+    margin-top: 76px;
+}
+
+nav {
+    background: white;
+    margin: 20px 0;
+}
+
+nav ul {
+    text-align: center;
+    padding: 10px 0 5px;
+    margin-bottom: 0;
+}
+
+nav li {
+    display: inline;
+    padding: 0 20px;
+}
+
+nav a {
+    color: #333;
+    font-family: Georgia, Times New Roman, serif;
+    text-transform: uppercase;
+    font-size: 26px;
+}
+
+article {
     padding: 20px;
-    margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-    -webkit-border-radius: 0 0 6px 6px;
-    -moz-border-radius: 0 0 6px 6px;
-    border-radius: 0 0 6px 6px;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-    box-shadow: 0 1px 2px rgba(0,0,0,.15);
-}
-
-.span6 {
-    width: 300px;
-}
-
-.container {
-    width: 900px;
-}
-
-/* Page header tweaks */
-.page-header {
-    background-color: #f5f5f5;
-    padding: 20px 20px 10px;
-    margin: -20px -20px 20px;
-}
-
-.content h1 a {
-    color: black;
-    text-decoration: none;
 }
 
 /* Player */

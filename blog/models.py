@@ -18,6 +18,12 @@ class Image(models.Model):
         format='JPEG', 
         options={'quality': 90}
         )
+    feature_image = ImageSpec(
+        [resize.Fit(250, 250),],
+        image_field='image',
+        format='JPEG',
+        options={'quality': 90}
+        )
 
     def __unicode__(self):
         return self.title
@@ -63,3 +69,11 @@ class Post(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('post', [self.slug])
+
+class Feature(models.Model):
+    title = models.CharField(max_length=100)
+    post = models.ForeignKey(Post)
+    image = models.ForeignKey(Image, blank=True, null=True)
+    byline = models.CharField(max_length=255, blank=True)
+    active = models.BooleanField(blank=True)
+    order = models.IntegerField(default=1)
