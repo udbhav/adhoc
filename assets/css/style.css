@@ -15,7 +15,12 @@ body {
     background: -ms-linear-gradient(top, #000000 0%,#ffffff 50%); /* IE10+ */
     background: linear-gradient(top, #000000 0%,#ffffff 50%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+body, p, article {
     font-family: Georgia, Times New Roman, sans-serif;
+    font-size: 16px;
+    line-height: 22px;
 }
 
 #texture_wrapper {
@@ -80,6 +85,7 @@ nav a {
     position: relative;
     color: #fff;
     margin-right: 20px;
+    width: 260px;
 }
 
 #features .last {
@@ -102,12 +108,16 @@ nav a {
     color: #fff;
 }
 
-article {
+article, #disqus_thread {
     padding: 20px;
 }
 
 article h1 a {
     color: #333;
+}
+
+.header_image, .embed {
+    margin-bottom: 20px;
 }
 
 article h1 {
