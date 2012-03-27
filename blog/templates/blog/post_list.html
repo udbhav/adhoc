@@ -6,7 +6,7 @@
 <ul id="features" class="unstyled clearfix">
   {% for f in features %}
   <li class="{% cycle '' '' 'last' %}">
-    <a href="{{ f.post.get_absolute_url }}"><img src="{{ f.image.feature_image.url }}" alt="{{ f }}" /></a>
+    <a href="{{ f.post.get_absolute_url }}"><img src="{{ f.image.feature_image.url }}" alt="{{ f }}" width="260" height="260"/></a>
     <div class="text">
       <h2><a href="{{ f.post_get_asbolute_url }}">{{ f }}</a></h2>
       {% if f.byline %}<p>{{ f.byline }}</p>{% endif %}
@@ -15,6 +15,40 @@
   {% endfor %}
 </ul>
 {% endif %}
+
+{% if recent_breaking %}
+<div class="recent_stories">
+  <h3>More Breaking</h3>
+  <ul class="unstyled">
+    {% for p in recent_breaking %}
+    <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% if recent_features %}
+<div class="recent_stories">
+  <h3>More Features</h3>
+  <ul class="unstyled">
+    {% for p in recent_features %}
+    <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% if recent_favorites %}
+<div class="recent_stories last">
+  <h3>More Favorites</h3>
+  <ul class="unstyled">
+    {% for p in recent_favorites %}
+    <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
 {% endblock %}
 
 {% block content %}

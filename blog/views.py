@@ -19,7 +19,7 @@ class ImageList(ListView):
 
 class PostsByTag(PostIndex):
     def get_queryset(self):
-        return Post.objects.filter(tags__name__in=[self.kwargs['tag']]).filter(published=True).order_by('timestamp')
+        return Post.objects.filter(tags__name__in=[self.kwargs['tag']]).filter(published=True).order_by('-timestamp')
 
     def get_context_data(self, **kwargs):
         context = super(PostsByTag, self).get_context_data(**kwargs)
@@ -32,6 +32,9 @@ class HomeView(PostIndex):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['features'] = Feature.objects.filter(active=True).order_by('order')
+        context['recent_breaking'] = Post.objects.filter(tags__name__in=['breaking']).filter(published=True).order_by('-timestamp')[:5]
+        context['recent_features'] = Post.objects.filter(tags__name__in=['feature']).filter(published=True).order_by('-timestamp')[:5]
+        context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorite']).filter(published=True).order_by('-timestamp')[:5]
         return context
 
 
