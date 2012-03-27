@@ -166,9 +166,11 @@ LOGGING = {
 OEMBED_MAX_WIDTH = '580'
 OEMBED_MAX_HEIGHT = '580'
 
+AUTH_PROFILE_MODULE = 'blog.AuthorProfile'
+
 try:
     from local_settings import *
 except ImportError:
     pass
 
-# Hope this works now
+

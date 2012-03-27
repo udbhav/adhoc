@@ -10,6 +10,15 @@
   <div class="embed">{{ object|return_embeds:"4" }}</div>
   {% endautoescape %}
 </article>
+<div class="author clearfix">
+  {% if object.author.get_profile.avatar %}
+  <img src="{{ object.author.get_profile.profile_image.url }}" alt="{{ object.author.get_full_name }}" />
+  {% endif %}
+    <h3><a href="{% url posts_by_author user_id=object.author.id %}">{{ object.author.get_full_name }}</a></h3>
+    {% autoescape off %}
+    {{ object.author.get_profile.bio }}
+    {% endautoescape %}
+</div>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'adhoc-staging';

@@ -80,3 +80,18 @@ class Feature(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class AuthorProfile(models.Model):
+    user = models.OneToOneField(User)
+    avatar = models.ImageField(upload_to='images', blank=True, null=True)
+    bio = models.TextField(blank=True)
+
+    profile_image = ImageSpec(
+        [resize.SmartCrop(100, 100),],
+        image_field='avatar',
+        format='JPEG',
+        options={'quality': 90}
+        )
+
+    def __unicode__(self):
+        return self.user.username

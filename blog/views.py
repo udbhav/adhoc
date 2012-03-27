@@ -1,8 +1,9 @@
 from django.views.generic import DetailView, ListView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-
+from django.shortcuts import get_object_or_404
 from blog.models import *
 
 class PostIndex(ListView):
@@ -26,8 +27,6 @@ class PostsByTag(PostIndex):
         context['current_nav'] = self.kwargs['tag']
         return context
 
-
-
 class HomeView(PostIndex):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -37,6 +36,10 @@ class HomeView(PostIndex):
         context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorite']).filter(published=True).order_by('-timestamp')[:5]
         return context
 
+class PostsByAuthor(PostIndex):
+    def get_queryset(self):
+        author = get_object_or_404(User, pk=self.kwargs['user_id'])
+        return Post.objects.filter(author=author).filter(published=True).order_by('-timestamp')
 
 @login_required
 @csrf_exempt
