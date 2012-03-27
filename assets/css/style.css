@@ -149,6 +149,16 @@ article h1 {
     margin: 0 20px 20px;
 }
 
+.share {
+    border-top: 1px solid #eaeaea;
+    padding: 20px 0;
+    margin: 0 20px;
+}
+
+.share .fb-like {
+    top: -4px;
+}
+
 .author img {
     float: left;
     margin-right: 20px;

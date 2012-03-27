@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-
   if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|Android)/)) {
     $("textarea").ckeditor({
 			  toolbar :
@@ -13,6 +11,12 @@ $(document).ready(function() {
     });
   }
 
+  // Only do this if we're adding a new one
+  if (document.location.pathname.indexOf('add') != -1) {
+    // select the right author
+    $("select#id_author option[selected]").removeAttr("selected");
+    $("select#id_author option[value=" + user_id + "]").attr("selected", "selected");
+  }
 });
 
 

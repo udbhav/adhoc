@@ -1,6 +1,7 @@
 from django.views.generic import DetailView, ListView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
@@ -14,6 +15,12 @@ class PostIndex(ListView):
 
 class PostDetail(DetailView):
     model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super(PostDetail, self).get_context_data(**kwargs)
+        permalink = 'http://%s%s' % (Site.objects.get_current().domain, self.get_object().get_absolute_url())
+        context['permalink'] = permalink
+        return context
 
 class ImageList(ListView):
     model = Image
