@@ -104,6 +104,7 @@ class AuthorProfile(models.Model):
 class Link(models.Model):
     name = models.CharField(max_length=255)
     url = models.CharField(max_length=255)
+    contributor = models.BooleanField()
 
     def __unicode__(self):
         return self.name

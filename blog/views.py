@@ -26,6 +26,11 @@ class PostDetail(DetailView):
         context['permalink'] = permalink
         return context
 
+class FriendList(ListView):
+    model = Link
+    def get_queryset(self):
+        return Link.objects.filter(contributor=False)
+
 class ImageList(ListView):
     model = Image
 

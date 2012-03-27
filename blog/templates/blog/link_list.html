@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block page_title %}Friends{% endblock %}
+
+{% block features %}
+<h1 class="subtitle">Friends</h1>
+{% endblock %}
+
+{% block content %}
+<article>
+  {% for object in object_list %}
+  <h3><a href="{{ object.url }}">{{ object.name }}</a></h3>
+  {% endfor %}
+</article>
+{% endblock %}
