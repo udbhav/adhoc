@@ -96,3 +96,13 @@ class AuthorProfile(models.Model):
 
     def __unicode__(self):
         return self.user.username
+
+class Link(models.Model):
+    name = models.CharField(max_length=255)
+    url = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['name']

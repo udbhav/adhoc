@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from django import template
 from django.db.models import Q
 from oembed.core import replace
-from blog.models import Post
+from blog.models import Post, Link
 
 register = template.Library()
 
@@ -40,3 +40,19 @@ def most_liked():
     html += '</ul>'
 
     return html
+
+@register.simple_tag
+def blogroll():
+    links = Link.objects.all()
+
+    if links:
+        html = '<ul class="unstyled">'
+
+        for l in links:
+            html += '<li><a href="%s">%s</a></li>' % (l.url, l.name)
+
+        html += '</ul>'
+        return html
+    else:
+        return ''
+    
