@@ -2,6 +2,7 @@ from django.views.generic import DetailView, ListView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
+from django.contrib.syndication.views import Feed
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
@@ -47,6 +48,18 @@ class PostsByAuthor(PostIndex):
     def get_queryset(self):
         author = get_object_or_404(User, pk=self.kwargs['user_id'])
         return Post.objects.filter(author=author).filter(published=True).order_by('-timestamp')
+
+class AllEntriesFeed(Feed):
+    title = "AdHoc"
+    link = "/"
+    description = "All Entries from Adhoc"
+
+    def items(self):
+        return Post.objects.filter(published=True).order_by('-timestamp')
+    def item_title(self, item):
+        return item.title
+    def item_description(self, item):
+        return item.body
 
 @login_required
 @csrf_exempt
