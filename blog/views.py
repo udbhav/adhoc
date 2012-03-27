@@ -15,7 +15,7 @@ class PostIndex(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return Post.objects.filter(published=True).order_by('-timestamp')
+        return Post.objects.filter(published=True)
 
 class PostDetail(DetailView):
     model = Post
@@ -31,12 +31,11 @@ class ImageList(ListView):
 
 class PostsByTag(PostIndex):
     def get_queryset(self):
-        return Post.objects.filter(tags__slug__in=[self.kwargs['tag']]).filter(published=True).order_by('-timestamp')
+        return Post.objects.filter(tags__slug__in=[self.kwargs['tag']]).filter(published=True)
 
     def get_context_data(self, **kwargs):
         context = super(PostsByTag, self).get_context_data(**kwargs)
         tag = get_object_or_404(Tag, slug = self.kwargs['tag'])
-        print 'TAG: %s' % tag
         context['current_nav'] = tag.slug
         if tag.slug != 'breaking' and tag.slug != 'favorite' and tag.slug != 'mix' and tag.slug != 'feature':
             context['title'] = 'Posts Tagged %s' % tag
@@ -46,9 +45,9 @@ class HomeView(PostIndex):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['features'] = Feature.objects.filter(active=True).order_by('order')
-        context['recent_breaking'] = Post.objects.filter(tags__name__in=['breaking']).filter(published=True).order_by('-timestamp')[:5]
-        context['recent_features'] = Post.objects.filter(tags__name__in=['feature']).filter(published=True).order_by('-timestamp')[:5]
-        context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorite']).filter(published=True).order_by('-timestamp')[:5]
+        context['recent_breaking'] = Post.objects.filter(tags__name__in=['breaking']).filter(published=True)[:5]
+        context['recent_features'] = Post.objects.filter(tags__name__in=['feature']).filter(published=True)[:5]
+        context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorite']).filter(published=True)[:5]
         return context
 
 class PostsByAuthor(PostIndex):

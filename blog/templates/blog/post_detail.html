@@ -12,38 +12,41 @@
   <div class="embed">{{ object|return_embeds:"4" }}</div>
   {% endautoescape %}
 </article>
-<div class="share">
-  <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-  <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-href="{{ permalink }}"></div>
-</div>
-{% if object.tags %}
-<div class="tags">
-Tagged: 
-{% for t in object.tags.all %}
-<a href="{% url posts_by_tag tag=t.slug %}">{{ t|capfirst }}</a>{% if forloop.last %}{% else %}, {% endif %}
-{% endfor %}
-</div>
-{% endif %}
-<div class="author clearfix">
-  {% if object.author.get_profile.avatar %}
-  <img src="{{ object.author.get_profile.profile_image.url }}" alt="{{ object.author.get_full_name }}" />
+<div class="post_extras">
+  <div class="share">
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+    <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-href="{{ permalink }}"></div>
+  </div>
+  {% if object.tags %}
+  <div class="tags">
+    Tagged: 
+    {% for t in object.tags.all %}
+    <a href="{% url posts_by_tag tag=t.slug %}">{{ t|capfirst }}</a>{% if forloop.last %}{% else %}, {% endif %}
+    {% endfor %}
+  </div>
   {% endif %}
-  <h3><a href="{% url posts_by_author user_id=object.author.id %}">{{ object.author.get_full_name }}</a></h3>
-  {% autoescape off %}
-  {{ object.author.get_profile.bio }}
-  {% endautoescape %}
+  <div class="author clearfix">
+    {% if object.author.get_profile.avatar %}
+    <img src="{{ object.author.get_profile.profile_image.url }}" alt="{{ object.author.get_full_name }}" />
+    {% endif %}
+    <h3><a href="{% url posts_by_author user_id=object.author.id %}">{{ object.author.get_full_name }}</a></h3>
+    {% autoescape off %}
+    {{ object.author.get_profile.bio }}
+    {% endautoescape %}
+  </div>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'adhoc-staging';
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_shortname = 'adhoc-staging';
-  (function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 {% endblock %}

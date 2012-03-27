@@ -71,6 +71,10 @@ class Post(models.Model):
     def get_absolute_url(self):
         return ('post', [self.slug])
 
+    class Meta:
+        ordering = ['-timestamp']
+
+
 class Feature(models.Model):
     title = models.CharField(max_length=100)
     post = models.ForeignKey(Post)
