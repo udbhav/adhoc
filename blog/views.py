@@ -44,10 +44,16 @@ class PostsByTag(PostIndex):
 class HomeView(PostIndex):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        context['features'] = Feature.objects.filter(active=True).order_by('order')
-        context['recent_breaking'] = Post.objects.filter(tags__name__in=['breaking']).filter(published=True)[:5]
-        context['recent_features'] = Post.objects.filter(tags__name__in=['feature']).filter(published=True)[:5]
-        context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorite']).filter(published=True)[:5]
+
+        features = Feature.objects.filter(active=True).order_by('order')
+        post_ids = []
+        for f in features:
+            post_ids.append(f.post_id)
+
+        context['features'] = features
+        context['recent_breaking'] = Post.objects.filter(tags__name__in=['breaking']).filter(published=True).exclude(id__in=post_ids)[:5]
+        context['recent_features'] = Post.objects.filter(tags__name__in=['feature']).filter(published=True).exclude(id__in=post_ids)[:5]
+        context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorite']).filter(published=True).exclude(id__in=post_ids)[:5]
         return context
 
 class PostsByAuthor(PostIndex):

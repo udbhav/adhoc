@@ -3,16 +3,23 @@
 
 <ul id="sidebar" class="unstyled">
   {% place_ad '2' %}
-  <li>
-    <div class="fb-like-box" data-href="http://www.facebook.com/adhocfm" data-width="300" data-show-faces="true" data-stream="false" data-header="false"></div>
-  </li>
-  {% place_ad '3' %}
   <li class="sidebar_item">
     <h3>Most Liked From Last Week</h3>
     {% most_liked %}
   </li>
+  {% place_ad '3' %}
   <li class="sidebar_item">
     <h3>Blogroll</h3>
     {% blogroll %}
+  </li>
+  <li>
+    <div class="fb-like-box" data-href="http://www.facebook.com/adhocfm" data-width="300" data-show-faces="true" data-stream="false" data-header="false"></div>
+  </li>
+  <li class="sidebar_item">
+    <h3>Join Our Mailing List</h3>
+    <form action="http://adhoc.us4.list-manage.com/subscribe/post?u=c888022777335487a2d831a74&amp;id=76ede939d2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+	    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+	    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn">
+    </form>
   </li>
 </ul>

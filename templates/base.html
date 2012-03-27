@@ -31,9 +31,7 @@
           <ul class="unstyled">
             <li{% if current_nav == 'breaking' %} class="active"{% endif %}><a href="{% url posts_by_tag tag='breaking' %}">Breaking</a></li>
             <li{% if current_nav == 'favorite' %} class="active"{% endif %}><a href="{% url posts_by_tag tag='favorite' %}">Favorites</a></li>
-            <li{% if current_nav == 'mix' %} class="active"{% endif %}><a href="{% url posts_by_tag tag='mix' %}">Mixes</a></li>
             <li{% if current_nav == 'feature' %} class="active"{% endif %}><a href="{% url posts_by_tag tag='feature' %}">Features</a></li>
-            <li{% if current_nav == 'zine' %} class="active"{% endif %}><a href="#">Zine</a></li>
             <li{% if current_nav == 'about' %} class="active"{% endif %}><a href="#">About</a></li>
           </ul>
         </nav>

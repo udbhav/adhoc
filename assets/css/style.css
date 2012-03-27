@@ -40,13 +40,13 @@ body, p, article {
     text-indent: -9999px;
     display: block;
     background: url(../images/logo.png);
-    width: 162px;
-    height: 171px;
+    width: 192px;
+    height: 205px;
 }
 
 #header .ad {
     float: right;
-    margin-top: 76px;
+    margin-top: 109px;
 }
 
 #header .social {
@@ -194,15 +194,33 @@ nav li.active a {
     border-top: 1px solid #e5e5e5;
 }
 
-.recent_stories a {
+.recent_stories a, .sidebar_item li a {
     display: block;
-    padding: 5px;
+    padding: 6px 10px;
     color: #666;
 }
 
-.recent_stories a:hover {
+.recent_stories a:hover , .sidebar_item li a:hover{
     text-decoration: none;
     background: #eaeaea;
+}
+
+.sidebar_item li {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.sidebar_item ul {
+    border-top: 1px solid #e5e5e5;
+}
+
+.recent_stories .more a {
+    font-style: italic;
+    font-size: 12px;
+}
+
+.recent_stories .more a:hover {
+    background: none;
+    text-decoration: underline;
 }
 
 .recent_stories.last {
@@ -261,6 +279,10 @@ article h1 {
     margin-right: 20px;
 }
 
+#sidebar h3 {
+    margin-bottom: 10px;
+}
+
 #sidebar > li {
     margin-bottom: 20px;
 }
@@ -268,6 +290,10 @@ article h1 {
 #sidebar .sidebar_item {
     background: white;
     padding: 20px;
+}
+
+.sidebar_item form {
+    margin-bottom: 0;
 }
 
 #sidebar .fb-like-box {
