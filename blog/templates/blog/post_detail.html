@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load adhoc_posts %}
 
+{% block page_title %}{{ object.title }}{% endblock %}
+
 {% block content %}
 <article>
   {% include "blog/post_top.html" %}
@@ -16,6 +18,14 @@
 
   <div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-href="{{ permalink }}"></div>
 </div>
+{% if object.tags %}
+<div class="tags">
+Tagged: 
+{% for t in object.tags.all %}
+<a href="{% url posts_by_tag tag=t.slug %}">{{ t|capfirst }}</a>{% if forloop.last %}{% else %}, {% endif %}
+{% endfor %}
+</div>
+{% endif %}
 <div class="author clearfix">
   {% if object.author.get_profile.avatar %}
   <img src="{{ object.author.get_profile.profile_image.url }}" alt="{{ object.author.get_full_name }}" />

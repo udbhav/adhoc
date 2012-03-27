@@ -1,8 +1,14 @@
 {% load advertising_tags %}
+{% load adhoc_posts %}
+
 <ul id="sidebar" class="unstyled">
   {% place_ad '2' %}
   <li>
     <div class="fb-like-box" data-href="http://www.facebook.com/adhocfm" data-width="300" data-show-faces="true" data-stream="false" data-header="false"></div>
   </li>
   {% place_ad '3' %}
+  <li class="sidebar_item">
+    <h3>Most Liked From Last Week</h3>
+    {% most_liked %}
+  </li>
 </ul>

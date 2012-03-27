@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load adhoc_posts %}
 
+{% block page_title %}{{ title }}{% endblock %}
 {% block features %}
 {% if features %}
 <ul id="features" class="unstyled clearfix">
@@ -16,6 +17,11 @@
 </ul>
 {% endif %}
 
+{% if title %}
+<h1 class="subtitle">{{ title }}</h1>
+{% endif %}
+
+{% if recent_breaking or recent_features or recent_favorites %}
 <div class="recent_stories_container clearfix">
 {% if recent_breaking %}
 <div class="recent_stories">
@@ -50,6 +56,8 @@
 </div>
 {% endif %}
 </div>
+{% endif %}
+
 {% endblock %}
 
 {% block content %}
@@ -61,4 +69,18 @@
 {% empty %}
 <article><h3>Sorry no posts matched.</h3></article>
 {% endfor %}
+
+
+<ul class="pager">
+  {% if page_obj.has_previous %}
+  <li class="previous">
+  <a href="?page={{ page_obj.previous_page_number }}">&larr; Newer</a>
+  {% endif %}
+
+  {% if page_obj.has_next %}
+  <li class="next">
+  <a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a>
+  </li>
+  {% endif %}
+</ul>
 {% endblock %}

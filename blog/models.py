@@ -60,6 +60,7 @@ class Post(models.Model):
     author = models.ForeignKey(User)
     published = models.BooleanField(default=True)
     timestamp = models.DateTimeField()
+    likes = models.IntegerField(editable=False, default=0)
 
     tags = TaggableManager(blank=True)
 

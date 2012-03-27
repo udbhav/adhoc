@@ -6,10 +6,13 @@ from django.contrib.syndication.views import Feed
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from taggit.models import Tag
+
 from blog.models import *
 
 class PostIndex(ListView):
     model = Post
+    paginate_by = 10
 
     def get_queryset(self):
         return Post.objects.filter(published=True).order_by('-timestamp')
@@ -28,11 +31,15 @@ class ImageList(ListView):
 
 class PostsByTag(PostIndex):
     def get_queryset(self):
-        return Post.objects.filter(tags__name__in=[self.kwargs['tag']]).filter(published=True).order_by('-timestamp')
+        return Post.objects.filter(tags__slug__in=[self.kwargs['tag']]).filter(published=True).order_by('-timestamp')
 
     def get_context_data(self, **kwargs):
         context = super(PostsByTag, self).get_context_data(**kwargs)
-        context['current_nav'] = self.kwargs['tag']
+        tag = get_object_or_404(Tag, slug = self.kwargs['tag'])
+        print 'TAG: %s' % tag
+        context['current_nav'] = tag.slug
+        if tag.slug != 'breaking' and tag.slug != 'favorite' and tag.slug != 'mix' and tag.slug != 'feature':
+            context['title'] = 'Posts Tagged %s' % tag
         return context
 
 class HomeView(PostIndex):
@@ -46,8 +53,13 @@ class HomeView(PostIndex):
 
 class PostsByAuthor(PostIndex):
     def get_queryset(self):
-        author = get_object_or_404(User, pk=self.kwargs['user_id'])
-        return Post.objects.filter(author=author).filter(published=True).order_by('-timestamp')
+        self.author = get_object_or_404(User, pk=self.kwargs['user_id'])
+        return Post.objects.filter(author=self.author).filter(published=True).order_by('-timestamp')
+
+    def get_context_data(self, **kwargs):
+        context = super(PostsByAuthor, self).get_context_data(**kwargs)
+        context['title'] = 'Posts by %s' % self.author.get_full_name()
+        return context
 
 class AllEntriesFeed(Feed):
     title = "AdHoc"

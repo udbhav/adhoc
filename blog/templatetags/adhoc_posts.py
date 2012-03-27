@@ -1,6 +1,8 @@
+from datetime import datetime, timedelta
 from django import template
 from django.db.models import Q
 from oembed.core import replace
+from blog.models import Post
 
 register = template.Library()
 
@@ -25,3 +27,16 @@ def read_more(post):
         return True
     else:
         return False
+
+@register.simple_tag
+def most_liked():
+    time_ago = datetime.now() - timedelta(days=7)
+    posts = Post.objects.filter(timestamp__gte=time_ago).filter(published=True).order_by('-likes')[:5]
+    html = '<ul class="unstyled">'
+
+    for p in posts:
+        html += '<li><a href="%s">%s</a></li>' % (p.slug, p.title)
+
+    html += '</ul>'
+
+    return html

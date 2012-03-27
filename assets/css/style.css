@@ -74,6 +74,10 @@ nav a {
     font-size: 26px;
 }
 
+nav li.active a {
+    color: #08C;
+}
+
 #features {
     margin-bottom: 20px;
 }
@@ -126,6 +130,13 @@ nav a {
     margin-right: 0;
 }
 
+.subtitle {
+    background: #e5e5e5;
+    padding: 20px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+}
 article, #disqus_thread {
     padding: 20px;
 }
@@ -142,8 +153,16 @@ article h1 {
     margin-bottom: 15px;
 }
 
-.author {
+.author, .share, .tags {
     border-top: 1px solid #eaeaea;
+}
+
+.tags {
+    padding: 20px 0;
+    margin: 0 20px;
+}
+
+.author {
     border-bottom: 1px solid #eaeaea;
     padding: 20px 0 20px;
     margin: 0 20px 20px;
@@ -163,12 +182,22 @@ article h1 {
     float: left;
     margin-right: 20px;
 }
-#sidebar li {
+
+#sidebar > li {
     margin-bottom: 20px;
+}
+
+#sidebar .sidebar_item {
+    background: white;
+    padding: 20px;
 }
 
 #sidebar .fb-like-box {
     background: #fff;
+}
+
+.pager {
+    margin: 0 20px 20px;
 }
 
 /* Player */

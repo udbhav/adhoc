@@ -11,7 +11,7 @@ urlpatterns = patterns(
     (r'^tag/(?P<tag>[-\w]+)/$', PostsByTag.as_view(), {}, 'posts_by_tag'),
     (r'^author/(?P<user_id>\d+)/$', PostsByAuthor.as_view(), {}, 'posts_by_author'),
     (r'^feed/$', AllEntriesFeed(), {}, 'rss_feed'),
-    (r'^(?P<slug>[-\w]+)/$', PostDetail.as_view(), {}, 'post'),
+    (r'^post/(?P<slug>[-\w]+)/$', PostDetail.as_view(), {}, 'post'),
     (r'^$', HomeView.as_view(), {}, 'home'),
 )
 
