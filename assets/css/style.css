@@ -89,6 +89,19 @@ body, p, article {
     background-position: -150px 0;
 }
 
+#header .search {
+    position: absolute;
+    right: 0;
+    top: 65px;
+}
+
+#header .search input {
+    background: transparent;
+    border: 1px solid #666;
+    color: #fefefe;
+    width: 220px;
+}
+
 nav {
     background: white;
     margin: 20px 0;

@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'oembed',
     'taggit',
+    'haystack',
 
     'blog',
     'advertising',
@@ -167,6 +168,10 @@ OEMBED_MAX_WIDTH = '580'
 OEMBED_MAX_HEIGHT = '580'
 
 AUTH_PROFILE_MODULE = 'blog.AuthorProfile'
+
+HAYSTACK_SITECONF = 'search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'whoosh_index')
 
 try:
     from local_settings import *

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load adhoc_posts %}
+
+{% block features %}
+<h1 class="subtitle">Search results For {{ query }}</h1>
+{% endblock %}
+
+{% block content %}
+{% for result in page.object_list %}
+{% with result.object as object %}
+<article>
+  {% include "blog/post_top.html" %}
+  {% if object|read_more %}<a href="{{ object.get_absolute_url }}" class="read_more">Read More</a>{% endif %}
+</article>
+{% endwith %}
+{% empty %}
+<article>
+<p>No results found.</p>
+</article>
+{% endfor %}
+
+<ul class="pager">
+  {% if page.has_previous %}
+  <li class="previous">
+  <a href="?page={{ page.previous_page_number }}">&larr; Newer</a>
+  {% endif %}
+
+  {% if page.has_next %}
+  <li class="next">
+  <a href="?page={{ page.next_page_number }}">Older &rarr;</a>
+  </li>
+  {% endif %}
+</ul>
+{% endblock %}

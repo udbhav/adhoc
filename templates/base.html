@@ -25,6 +25,9 @@
             <li class="soundcloud"><a href="http://soundcloud.com/adhocfm">Soundcloud</a></li>
             <li class="rss"><a href="{% url rss_feed %}">RSS</a></li>
           </ul>
+          <form method="get" action="/search" class="search">
+            <input type="text" name="q" placeholder="Search" />
+          </form>
           <div class="ad">{% place_ad '1' %}</div>
         </header>
         <nav>
