@@ -15,10 +15,3 @@ urlpatterns = patterns(
     (r'^friends/$', FriendList.as_view(), {}, 'friends'),
     (r'^$', HomeView.as_view(), {}, 'home'),
 )
-
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
-   )

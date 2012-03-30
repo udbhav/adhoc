@@ -19,6 +19,7 @@ urlpatterns = patterns(
 
     (r'^music/', include('music.urls')),
     (r'^search/', include('haystack.urls')),
+    (r'^ads/', include('advertising.urls')),
     (r'^', include('blog.urls')),
 )
 

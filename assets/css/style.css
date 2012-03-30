@@ -199,8 +199,12 @@ nav li.active a {
     width: 260px;
     float: left;
     background: white;
-    padding: 0 20px 20px;
+    padding: 0 20px 10px;
     margin-right: 20px;
+}
+
+.recent_stories ul {
+    margin-bottom: 0;
 }
 
 .recent_stories li {
@@ -311,6 +315,15 @@ article h1 {
 
 #sidebar .fb-like-box {
     background: #fff;
+}
+
+.sidebar_ad {
+    margin-bottom: 0;
+}
+
+.sidebar_ad .inserted {
+    background: white;
+    margin-bottom: 20px;
 }
 
 .pager {

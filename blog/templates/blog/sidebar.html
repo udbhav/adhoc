@@ -1,13 +1,16 @@
-{% load advertising_tags %}
 {% load adhoc_posts %}
 
 <ul id="sidebar" class="unstyled">
-  {% place_ad '2' %}
+  <li class="sidebar_ad">
+    <div id="ad_slot_2"></div>
+  </li>
   <li class="sidebar_item">
     <h3>Most Liked From Last Week</h3>
     {% most_liked %}
   </li>
-  {% place_ad '3' %}
+  <li class="sidebar_ad">
+    <div id="ad_slot_3"></div>
+  </li>
   <li class="sidebar_item">
     <h3>Contributors</h3>
     {% blogroll %}
