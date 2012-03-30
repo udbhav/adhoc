@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 {% load adhoc_posts %}
 
-{% block features %}
-<h1 class="subtitle">Search results For {{ query }}</h1>
-{% endblock %}
-
 {% block content %}
+<h1 class="subtitle">Search results for <em>{{ query }}</em></h1>
 {% for result in page.object_list %}
 {% with result.object as object %}
 <article>

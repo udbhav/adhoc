@@ -245,11 +245,8 @@ nav li.active a {
 }
 
 .subtitle {
-    background: #e5e5e5;
-    padding: 20px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    text-align: center;
+    margin-bottom: 30px;
+    color: #eaeaea
 }
 article, .post_extras {
     padding: 20px;

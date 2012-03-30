@@ -55,15 +55,13 @@
 </div>
 {% endif %}
 </div>
+{% endblock %}
 
+{% block content %}
 {% if title %}
 <h1 class="subtitle">{{ title }}</h1>
 {% endif %}
 
-
-{% endblock %}
-
-{% block content %}
 {% for object in object_list %}
 <article>
   {% include "blog/post_top.html" %}
