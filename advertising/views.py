@@ -15,8 +15,6 @@ def serve(request):
 
         ad_response = []
 
-        print slots
-
         for slot in slots:
             ads = Advertisement.objects.filter(position=slot).filter(active=True).filter(start_date__lte=datetime.now()).filter(end_date__gte=datetime.now())
             paid_ads = ads.filter(paid=True)
