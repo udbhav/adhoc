@@ -26,4 +26,6 @@ urlpatterns = patterns(
 if settings.DEBUG:
     urlpatterns += patterns('',
         url(r'^media/(.*)$', 'django.views.static.serve', kwargs={'document_root': settings.MEDIA_ROOT}),
+        (r'^500/$', 'django.views.generic.simple.direct_to_template', {'template': '500.html'}),
+        (r'^404/$', 'django.views.generic.simple.direct_to_template', {'template': '404.html'}),
     )

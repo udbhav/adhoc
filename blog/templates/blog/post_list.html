@@ -31,6 +31,17 @@
 </div>
 {% endif %}
 
+{% if recent_favorites %}
+<div class="recent_stories last">
+  <ul class="unstyled">
+    {% for p in recent_favorites %}
+    <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
+    {% endfor %}
+    <li class="more"><a href="{% url posts_by_tag tag='favorite' %}">More Favorites</a></li>
+  </ul>
+</div>
+{% endif %}
+
 {% if recent_features %}
 <div class="recent_stories">
   <ul class="unstyled">
@@ -42,16 +53,6 @@
 </div>
 {% endif %}
 
-{% if recent_favorites %}
-<div class="recent_stories last">
-  <ul class="unstyled">
-    {% for p in recent_favorites %}
-    <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
-    {% endfor %}
-    <li class="more"><a href="{% url posts_by_tag tag='favorite' %}">More Favorites</a></li>
-  </ul>
-</div>
-{% endif %}
 </div>
 {% endif %}
 </div>
