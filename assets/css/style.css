@@ -133,6 +133,7 @@ nav li.active a {
 }
 
 #features_container {
+    background: url(../images/more_stories_bg.png);
     margin-bottom: 20px;
 }
 
@@ -195,7 +196,6 @@ nav li.active a {
     opacity: 0.8;
 }
 .recent_stories_container {
-    background: url(../images/more_stories_bg.png);
     margin-bottom: 20px;
 }
 
