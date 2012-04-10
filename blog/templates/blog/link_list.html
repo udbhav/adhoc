@@ -2,11 +2,8 @@
 
 {% block page_title %}Friends{% endblock %}
 
-{% block features %}
-<h1 class="subtitle">Friends</h1>
-{% endblock %}
-
 {% block content %}
+<h1 class="subtitle">Friends</h1>
 <article>
   {% for object in object_list %}
   <h3><a href="{{ object.url }}">{{ object.name }}</a></h3>
