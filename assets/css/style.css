@@ -89,6 +89,10 @@ body, p, article {
     background-position: -150px 0;
 }
 
+#header .email a {
+    background-position: -200px 0;
+}
+
 #header .search {
     position: absolute;
     right: 0;
@@ -99,7 +103,7 @@ body, p, article {
     background: transparent;
     border: 1px solid #666;
     color: #fefefe;
-    width: 220px;
+    width: 280px;
 }
 
 nav {
