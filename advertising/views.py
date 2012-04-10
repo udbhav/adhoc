@@ -3,9 +3,11 @@ from datetime import datetime
 from random import choice
 
 from django.http import HttpResponse, HttpResponseBadRequest
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 from advertising.models import Advertisement
 
+@csrf_exempt
 def serve(request):
     if request.POST:
         try:

@@ -262,6 +262,10 @@ article, .post_extras {
     margin-bottom: 20px;
 }
 
+article p {
+    line-height: 26px;
+}
+
 article h1 a {
     color: #333;
 }
