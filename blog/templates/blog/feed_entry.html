@@ -1,0 +1,11 @@
+{% load adhoc_posts %}
+{% with obj as object %}
+{% autoescape off %}
+{% if object.header_image %}<p class="header_image"><img src="{{ object.header_image.medium_image.url }}" alt="{{ object }}"/></p>{% endif %}
+<div class="embed">{{ object|return_embeds:"1" }}</div>
+{{ object.body }}
+<div class="embed">{{ object|return_embeds:"2" }}</div>
+
+{% if object|read_more %}<a href="{{ object.get_absolute_url }}" class="read_more">Read More</a>{% endif %}
+{% endautoescape %}
+{% endwith %}

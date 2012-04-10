@@ -77,13 +77,12 @@ class AllEntriesFeed(Feed):
     title = "AdHoc"
     link = "/"
     description = "All Entries from Adhoc"
+    description_template = "blog/feed_entry.html"
 
     def items(self):
         return Post.objects.filter(published=True).order_by('-timestamp')
     def item_title(self, item):
         return item.title
-    def item_description(self, item):
-        return item.body
 
 @login_required
 @csrf_exempt
