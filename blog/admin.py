@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.flatpages.models import FlatPage
 
 from blog.models import *
 
@@ -16,7 +17,7 @@ class PostAdmin(admin.ModelAdmin):
         css = {"all": ("css/admin.css",)}
         js = ("js/jquery.min.js","js/ckeditor/ckeditor.js","js/ckeditor/adapters/jquery.js","js/admin.js")
 
-class AuthorAdmin(admin.ModelAdmin):
+class TextEditorAdmin(admin.ModelAdmin):
     class Media:
         css = {"all": ("css/admin.css",)}
         js = ("js/jquery.min.js","js/ckeditor/ckeditor.js","js/ckeditor/adapters/jquery.js","js/admin.js")
@@ -24,6 +25,8 @@ class AuthorAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 admin.site.register(Image)
 admin.site.register(Embed)
-admin.site.register(AuthorProfile, AuthorAdmin)
+admin.site.register(AuthorProfile, TextEditorAdmin)
 admin.site.register(Feature)
 admin.site.register(Link)
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, TextEditorAdmin)

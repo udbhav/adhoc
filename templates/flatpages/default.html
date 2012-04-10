@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block page_title %}{{ flatpage.title }}{% endblock %}
+
+{% block content %}
+<article>
+{% autoescape off %}
+{{ flatpage.content }}
+{% endautoescape %}
+</article>
+{% endblock %}
