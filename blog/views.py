@@ -57,8 +57,8 @@ class HomeView(PostIndex):
 
         context['features'] = features
         context['recent_breaking'] = Post.objects.filter(tags__name__in=['breaking']).filter(published=True).exclude(id__in=post_ids)[:5]
-        context['recent_features'] = Post.objects.filter(tags__name__in=['feature']).filter(published=True).exclude(id__in=post_ids)[:5]
-        context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorite']).filter(published=True).exclude(id__in=post_ids)[:5]
+        context['recent_features'] = Post.objects.filter(tags__name__in=['features']).filter(published=True).exclude(id__in=post_ids)[:5]
+        context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorites']).filter(published=True).exclude(id__in=post_ids)[:5]
         return context
 
 class PostsByAuthor(PostIndex):
