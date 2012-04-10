@@ -128,6 +128,10 @@ nav a {
     font-size: 26px;
 }
 
+nav a:hover {
+    text-decoration: none;
+}
+
 nav li.active a {
     color: #08C;
 }

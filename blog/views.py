@@ -42,7 +42,9 @@ class PostsByTag(PostIndex):
         context = super(PostsByTag, self).get_context_data(**kwargs)
         tag = get_object_or_404(Tag, slug = self.kwargs['tag'])
         context['current_nav'] = tag.slug
-        if tag.slug != 'breaking' and tag.slug != 'favorite' and tag.slug != 'mix' and tag.slug != 'feature':
+        if tag.slug == 'breaking' or tag.slug == 'favorites' or tag.slug == 'features':
+            pass
+        else:
             context['title'] = 'Posts Tagged %s' % tag
         return context
 
