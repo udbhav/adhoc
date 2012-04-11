@@ -20,12 +20,6 @@ class PostIndex(ListView):
 class PostDetail(DetailView):
     model = Post
 
-    def get_context_data(self, **kwargs):
-        context = super(PostDetail, self).get_context_data(**kwargs)
-        permalink = 'http://%s%s' % (Site.objects.get_current().domain, self.get_object().get_absolute_url())
-        context['permalink'] = permalink
-        return context
-
 class FriendList(ListView):
     model = Link
     def get_queryset(self):

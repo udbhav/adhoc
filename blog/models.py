@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from taggit.managers import TaggableManager
 from imagekit.models import ImageSpec
 from imagekit.processors import resize
@@ -70,6 +71,10 @@ class Post(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('post', [self.slug])
+
+    def get_permalink(self):
+        permalink = 'http://%s%s' % (Site.objects.get_current().domain, self.get_absolute_url())
+        return permalink
 
     class Meta:
         ordering = ['-timestamp']
