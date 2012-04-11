@@ -4,7 +4,13 @@
 </header>
 
 {% autoescape off %}
-{% if object.header_image %}<p class="header_image"><img src="{{ object.header_image.medium_image.url }}" alt="{{ object }}"/></p>{% endif %}
+{% if object.header_image %}
+<p class="header_image">
+<img src="{{ object.header_image.medium_image.url }}" alt="{{ object }}"/>
+{{ object.header_image.caption }}
+</p>
+
+{% endif %}
 <div class="embed">{{ object|return_embeds:"1" }}</div>
 {{ object.body }}
 <div class="embed">{{ object|return_embeds:"2" }}</div>

@@ -276,6 +276,13 @@ article h1 a {
     margin-bottom: 20px;
 }
 
+.header_image {
+    line-height: 18px;
+    font-size: 14px;
+    font-style: italic;
+    text-align: right;
+}
+
 article h1 {
     margin-bottom: 15px;
 }
