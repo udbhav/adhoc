@@ -35,7 +35,7 @@ def most_liked():
     html = '<ul class="unstyled">'
 
     for p in posts:
-        html += '<li><a href="/%s">%s</a></li>' % (p.slug, p.title)
+        html += '<li><a href="%s">%s</a></li>' % (p.get_absolute_url(), p.title)
 
     html += '</ul>'
 
