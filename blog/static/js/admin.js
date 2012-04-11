@@ -3,7 +3,7 @@ $(document).ready(function() {
     $("textarea").ckeditor({
 			  toolbar :
 			  [
-            {name: 'basic', items : ['Bold', 'Italic', '-', 'Link', 'Unlink','-', 'Image', 'Blockquote'] },
+            {name: 'basic', items : ['Bold', 'Italic', '-', 'Link', 'Unlink','-', 'Image', 'Blockquote', 'HorizontalRule'] },
 	          { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo', 'Source' ] },
 			  ],
         filebrowserBrowseUrl : '/images/',
