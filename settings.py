@@ -183,9 +183,9 @@ HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'whoosh_index')
 #         BACKEND = 'johnny.backends.memcached.MemcachedCache',
 #         LOCATION = ['127.0.0.1:11211'],
 #         JOHNNY_CACHE = True,
+#         TIMEOUT = 0,
 #     )
 # }
-
 try:
     from local_settings import *
 except ImportError:
