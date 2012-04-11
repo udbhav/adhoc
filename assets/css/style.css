@@ -170,6 +170,8 @@ nav li.active a {
 
 #features h2 {
     font-weight: normal;
+    font-size: 19px;
+    line-height: 26px;
 }
 
 #features a {
