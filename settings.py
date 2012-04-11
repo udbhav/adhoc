@@ -100,6 +100,8 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'johnny.middleware.LocalStoreClearMiddleware',
+    'johnny.middleware.QueryCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -174,6 +176,15 @@ AUTH_PROFILE_MODULE = 'blog.AuthorProfile'
 HAYSTACK_SITECONF = 'search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'whoosh_index')
+
+# some johnny settings
+# CACHES = {
+#     'default' : dict(
+#         BACKEND = 'johnny.backends.memcached.MemcachedCache',
+#         LOCATION = ['127.0.0.1:11211'],
+#         JOHNNY_CACHE = True,
+#     )
+# }
 
 try:
     from local_settings import *
