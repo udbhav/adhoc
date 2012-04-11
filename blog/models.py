@@ -46,7 +46,7 @@ class Embed(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField(help_text="Either a url or embed code", blank=True)
     music_embed = models.ForeignKey(MusicEmbed, blank=True, null=True)
-    position = models.CharField(choices=POSITION_CHOICES, max_length=1, default="4")
+    position = models.CharField(choices=POSITION_CHOICES, max_length=1, default="2")
 
     def __unicode__(self):
         return self.title
