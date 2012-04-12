@@ -32,7 +32,7 @@
 {% endif %}
 
 {% if recent_favorites %}
-<div class="recent_stories last">
+<div class="recent_stories">
   <ul class="unstyled">
     {% for p in recent_favorites %}
     <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
@@ -43,7 +43,7 @@
 {% endif %}
 
 {% if recent_features %}
-<div class="recent_stories">
+<div class="recent_stories last">
   <ul class="unstyled">
     {% for p in recent_features %}
     <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
