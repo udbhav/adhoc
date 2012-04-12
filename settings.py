@@ -177,6 +177,7 @@ HAYSTACK_SITECONF = 'search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'whoosh_index')
 
+JOHNNY_MIDDLEWARE_KEY_PREFIX='adhoc'
 # some johnny settings
 # CACHES = {
 #     'default' : dict(
