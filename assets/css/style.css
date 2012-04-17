@@ -283,8 +283,17 @@ article h1 a {
     text-align: right;
 }
 
-article h1 {
+article header {
     margin-bottom: 15px;
+}
+
+article h1 {
+    line-height: 28px;
+}
+
+article .byline {
+    font-size: 14px;
+    color: #666;
 }
 
 .author, .tags {

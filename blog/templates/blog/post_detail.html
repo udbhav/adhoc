@@ -27,6 +27,8 @@
     {% endfor %}
   </div>
   {% endif %}
+
+  {% if object.author.get_profile %}
   <div class="author clearfix">
     {% if object.author.get_profile.avatar %}
     <img src="{{ object.author.get_profile.profile_image.url }}" alt="{{ object.author.get_full_name }}" />
@@ -36,6 +38,8 @@
     {{ object.author.get_profile.bio }}
     {% endautoescape %}
   </div>
+  {% endif %}
+
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_shortname = 'adhoc-staging';
