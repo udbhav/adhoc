@@ -183,12 +183,12 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         'TIMEOUT': 0,
         },
-    'production' : {
-        'BACKEND': 'johnny.backends.memcached.MemcachedCache',
-        'LOCATION': ['127.0.0.1:11211'],
-        'JOHNNY_CACHE': True,
-        'TIMEOUT': 7200,
-        }
+    # 'production' : {
+    #     'BACKEND': 'johnny.backends.memcached.MemcachedCache',
+    #     'LOCATION': ['127.0.0.1:11211'],
+    #     'JOHNNY_CACHE': True,
+    #     'TIMEOUT': 7200,
+    #     }
     }
 
 LOGIN_URL = '/admin/'
