@@ -53,6 +53,7 @@ class Embed(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    formatted_title = models.CharField(max_length=255, blank=True, help_text='Use this if you want italics in your title, use &lt;em&gt;thing in italics&lt;/em&gt;')
     slug = models.SlugField(unique=True)
     header_image = models.ForeignKey(Image, blank=True, null=True)
     body = models.TextField(blank=True)

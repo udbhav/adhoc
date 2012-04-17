@@ -6,6 +6,9 @@ from blog.models import *
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     filter_horizontal = ('embeds',)
+    date_hierarchy = 'timestamp'
+    list_display = ('title', 'timestamp', 'published')
+    search_fields = ['title', 'slug']
 
     def queryset(self, request):
         qs = super(PostAdmin, self).queryset(request)

@@ -1,6 +1,6 @@
 {% load adhoc_posts %}
 <header>
-  <h1><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
+  <h1><a href="{{ object.get_absolute_url }}">{% if object.formatted_title %}{% autoescape off %}{{ object.formatted_title }}{% endautoescape %}{% else %}{{ object.title }}{% endif %}</a></h1>
   <p class="byline">{{ object.timestamp|date:"N j, Y" }} by <a href="{% url posts_by_author user_id=object.author.id %}">{{ object.author.get_full_name }}</a></p>
 </header>
 
