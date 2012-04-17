@@ -1,5 +1,8 @@
+from datetime import datetime
+
 from django.views.generic import DetailView, ListView
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import Feed
@@ -15,10 +18,19 @@ class PostIndex(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return Post.objects.filter(published=True)
+        return Post.objects.filter(published=True).filter(timestamp__lte=datetime.now())
 
 class PostDetail(DetailView):
     model = Post
+    queryset = Post.objects.filter(published=True).filter(timestamp__lte=datetime.now())
+
+class PostPreview(DetailView):
+    model = Post
+    template = "blog/post_detail.html"
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(PostPreview, self).dispatch(*args, **kwargs)
 
 class FriendList(ListView):
     model = Link
@@ -30,7 +42,7 @@ class ImageList(ListView):
 
 class PostsByTag(PostIndex):
     def get_queryset(self):
-        return Post.objects.filter(tags__slug__in=[self.kwargs['tag']]).filter(published=True)
+        return Post.objects.filter(tags__slug__in=[self.kwargs['tag']]).filter(published=True).filter(timestamp__lte=datetime.now())
 
     def get_context_data(self, **kwargs):
         context = super(PostsByTag, self).get_context_data(**kwargs)
@@ -60,7 +72,7 @@ class HomeView(PostIndex):
 class PostsByAuthor(PostIndex):
     def get_queryset(self):
         self.author = get_object_or_404(User, pk=self.kwargs['user_id'])
-        return Post.objects.filter(author=self.author).filter(published=True).order_by('-timestamp')
+        return Post.objects.filter(author=self.author).filter(published=True).filter(timestamp__lte=datetime.now()).order_by('-timestamp')
 
     def get_context_data(self, **kwargs):
         context = super(PostsByAuthor, self).get_context_data(**kwargs)
@@ -74,7 +86,7 @@ class AllEntriesFeed(Feed):
     description_template = "blog/feed_entry.html"
 
     def items(self):
-        return Post.objects.filter(published=True).order_by('-timestamp')
+        return Post.objects.filter(published=True).filter(timestamp__lte=datetime.now()).order_by('-timestamp')
     def item_title(self, item):
         return item.title
 

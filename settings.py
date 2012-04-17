@@ -178,15 +178,20 @@ HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'whoosh_index')
 
 JOHNNY_MIDDLEWARE_KEY_PREFIX='adhoc'
-# some johnny settings
-# CACHES = {
-#     'default' : dict(
-#         BACKEND = 'johnny.backends.memcached.MemcachedCache',
-#         LOCATION = ['127.0.0.1:11211'],
-#         JOHNNY_CACHE = True,
-#         TIMEOUT = 0,
-#     )
-# }
+CACHES = {
+    'default' : {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        'TIMEOUT': 0,
+        },
+    'production' : {
+        'BACKEND': 'johnny.backends.memcached.MemcachedCache',
+        'LOCATION': ['127.0.0.1:11211'],
+        'JOHNNY_CACHE': True,
+        'TIMEOUT': 7200,
+        }
+    }
+
+LOGIN_URL = '/admin/'
 try:
     from local_settings import *
 except ImportError:
