@@ -59,7 +59,7 @@ class Post(models.Model):
     read_more = models.TextField(blank=True)
     embeds = models.ManyToManyField(Embed, blank=True, null=True)
     author = models.ForeignKey(User)
-    published = models.BooleanField(default=True)
+    published = models.BooleanField()
     timestamp = models.DateTimeField()
     likes = models.IntegerField(editable=False, default=0)
 
