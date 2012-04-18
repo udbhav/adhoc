@@ -9,12 +9,38 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'timestamp'
     list_display = ('title', 'timestamp', 'published')
     search_fields = ['title', 'slug']
+    exclude = None
+    _exclude = exclude
 
     def queryset(self, request):
         qs = super(PostAdmin, self).queryset(request)
         if request.user.is_superuser:
             return qs
         return qs.filter(author=request.user)
+
+    def allowed_to_publish(self, user):
+        allowed = False
+        if user.is_superuser:
+            allowed = True
+        else:
+            if user.has_perm('blog.publish_post'):
+                allowed = True
+
+        return allowed
+
+    def change_view(self, request, extra_context=None):
+        if not self.allowed_to_publish(request.user):
+            self.exclude = ('published',)
+        else:
+            self.exclude = self._exclude
+        return super(PostAdmin, self).change_view(request, extra_context)
+
+    def add_view(self, request, extra_context=None):
+        if not self.allowed_to_publish(request.user):
+            self.exclude = ('published',)
+        else:
+            self.exclude = self._exclude
+        return super(PostAdmin, self).add_view(request, extra_context)
 
     class Media:
         css = {"all": ("css/admin.css",)}

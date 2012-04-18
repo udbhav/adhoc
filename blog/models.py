@@ -79,6 +79,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-timestamp']
+        permissions = (("publish_post", "Can publish post"),)
 
 
 class Feature(models.Model):
