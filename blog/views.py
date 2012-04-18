@@ -22,7 +22,7 @@ class PostIndex(ListView):
 
 class PostDetail(DetailView):
     model = Post
-    queryset = Post.objects.filter(published=True).filter(timestamp__lte=datetime.now)
+    queryset = Post.objects.filter(published=True)
 
 class PostPreview(DetailView):
     model = Post
