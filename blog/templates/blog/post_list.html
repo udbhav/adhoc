@@ -10,8 +10,8 @@
   <li class="{% cycle '' '' 'last' %}">
     <a href="{{ f.post.get_absolute_url }}"><img src="{{ f.image.feature_image.url }}" alt="{{ f }}" width="260" height="260"/></a>
     <div class="text">
-      <h2><a href="{{ f.post.get_absolute_url }}">{{ f }}</a></h2>
-      {% if f.byline %}<p>{{ f.byline }}</p>{% endif %}
+      <h2><a href="{{ f.post.get_absolute_url }}">{% autoescape off %}{{ f }}{% endautoescape %}</a></h2>
+      {% if f.byline %}<p>{% autoescape off %}{{ f.byline }}{% endautoescape %}</p>{% endif %}
     </div>
   </li>
   {% endfor %}
