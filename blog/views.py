@@ -64,9 +64,9 @@ class HomeView(PostIndex):
             post_ids.append(f.post_id)
 
         context['features'] = features
-        context['recent_breaking'] = Post.objects.filter(tags__name__in=['breaking']).filter(published=True).exclude(id__in=post_ids)[:5]
-        context['recent_features'] = Post.objects.filter(tags__name__in=['features']).filter(published=True).exclude(id__in=post_ids)[:5]
-        context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorites']).filter(published=True).exclude(id__in=post_ids)[:5]
+        context['recent_breaking'] = Post.objects.filter(tags__name__in=['breaking']).filter(published=True).filter(timestamp__lte=datetime.now).exclude(id__in=post_ids)[:5]
+        context['recent_features'] = Post.objects.filter(tags__name__in=['features']).filter(published=True).filter(timestamp__lte=datetime.now).exclude(id__in=post_ids)[:5]
+        context['recent_favorites'] = Post.objects.filter(tags__name__in=['favorites']).filter(published=True).filter(timestamp__lte=datetime.now).exclude(id__in=post_ids)[:5]
         return context
 
 class PostsByAuthor(PostIndex):
@@ -87,8 +87,12 @@ class AllEntriesFeed(Feed):
 
     def items(self):
         return Post.objects.filter(published=True).filter(timestamp__lte=datetime.now).order_by('-timestamp')
+
     def item_title(self, item):
         return item.title
+
+    def item_author_name(self, item):
+        return item.author.get_full_name()
 
 @login_required
 @csrf_exempt
