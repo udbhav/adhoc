@@ -35,12 +35,12 @@ class PostAdmin(admin.ModelAdmin):
             self.exclude = self._exclude
         return super(PostAdmin, self).change_view(request, extra_context)
 
-    def add_view(self, request, extra_context=None):
+    def add_view(self, request, form_url='', extra_context=None):
         if not self.allowed_to_publish(request.user):
             self.exclude = ('published',)
         else:
             self.exclude = self._exclude
-        return super(PostAdmin, self).add_view(request, extra_context)
+        return super(PostAdmin, self).add_view(request, form_url, extra_context)
 
     class Media:
         css = {"all": ("css/admin.css",)}
