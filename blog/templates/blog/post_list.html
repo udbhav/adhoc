@@ -24,7 +24,7 @@
 <div class="recent_stories">
   <ul class="unstyled">
     {% for p in recent_breaking %}
-    <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
+    <li><a href="{{ p.get_absolute_url }}">{% if p.formatted_title %}{% autoescape off %}{{ p.formatted_title }}{% endautoescape %}{% else %}{{ p.title }}{% endif %}</a></li>
     {% endfor %}
     <li class="more"><a href="{% url posts_by_tag tag='breaking' %}">More Breaking</a></li>
   </ul>
@@ -35,7 +35,7 @@
 <div class="recent_stories">
   <ul class="unstyled">
     {% for p in recent_favorites %}
-    <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
+    <li><a href="{{ p.get_absolute_url }}">{% if p.formatted_title %}{% autoescape off %}{{ p.formatted_title }}{% endautoescape %}{% else %}{{ p.title }}{% endif %}</a></li>
     {% endfor %}
     <li class="more"><a href="{% url posts_by_tag tag='favorites' %}">More Favorites</a></li>
   </ul>
@@ -46,7 +46,7 @@
 <div class="recent_stories last">
   <ul class="unstyled">
     {% for p in recent_features %}
-    <li><a href="{{ p.get_absolute_url }}">{{ p }}</a></li>
+    <li><a href="{{ p.get_absolute_url }}">{% if p.formatted_title %}{% autoescape off %}{{ p.formatted_title }}{% endautoescape %}{% else %}{{ p.title }}{% endif %}</a></li>
     {% endfor %}
     <li class="more"><a href="{% url posts_by_tag tag='features' %}">More Features</a></li>
   </ul>
