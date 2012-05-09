@@ -80,9 +80,9 @@ class PostsByAuthor(PostIndex):
         return context
 
 class AllEntriesFeed(Feed):
-    title = "AdHoc"
+    title = "Ad Hoc"
     link = "/"
-    description = "All Entries from Adhoc"
+    description = "All Entries from Ad Hoc"
     description_template = "blog/feed_entry.html"
 
     def items(self):
