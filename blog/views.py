@@ -86,7 +86,7 @@ class AllEntriesFeed(Feed):
     description_template = "blog/feed_entry.html"
 
     def items(self):
-        return Post.objects.filter(published=True).filter(timestamp__lte=datetime.now).order_by('-timestamp')
+        return Post.objects.filter(published=True).filter(timestamp__lte=datetime.now).order_by('-timestamp')[:10]
 
     def item_title(self, item):
         return item.title
