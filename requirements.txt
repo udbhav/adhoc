@@ -12,6 +12,7 @@ django-taggit==0.9.3
 docutils==0.8.1
 gunicorn==0.14.2
 johnny-cache==0.3.3
+newrelic==1.4.0.137
 psycopg2==2.4.5
 python-memcached==1.48
 wsgiref==0.1.2
