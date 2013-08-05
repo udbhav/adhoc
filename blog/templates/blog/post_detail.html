@@ -53,3 +53,7 @@
   <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 </div>
 {% endblock %}
+
+{% block chartbeat_config %}
+_sf_async_config.sections = "{{object.tag_list}}";
+{% endblock chartbeat_config %}
