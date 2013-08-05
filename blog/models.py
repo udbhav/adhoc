@@ -16,7 +16,7 @@ class Image(models.Model):
     medium_image = ImageSpec(
         [resize.Fit(580, 1080),],
         image_field='image',
-        format='JPEG', 
+        format='JPEG',
         options={'quality': 90}
         )
     feature_image = ImageSpec(
@@ -77,6 +77,9 @@ class Post(models.Model):
         permalink = 'http://%s%s' % (Site.objects.get_current().domain, self.get_absolute_url())
         return permalink
 
+    def tag_list(self):
+        return ",".join([t.name for t in self.tags.all()])
+
     class Meta:
         ordering = ['-timestamp']
         permissions = (("publish_post", "Can publish post"),
@@ -117,6 +120,6 @@ class Link(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
     class Meta:
         ordering = ['name']

@@ -21,7 +21,7 @@
   </div>
   {% if object.tags %}
   <div class="tags">
-    Tagged: 
+    Tagged:
     {% for t in object.tags.all %}
     <a href="{% url posts_by_tag tag=t.slug %}">{{ t|capfirst }}</a>{% if forloop.last %}{% else %}, {% endif %}
     {% endfor %}
